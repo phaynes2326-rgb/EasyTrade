@@ -34,7 +34,33 @@
     -webkit-font-smoothing: antialiased;
   }
   a{ color: var(--gold); }
+.glossary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 1.2rem 0;
+}
 
+.gterm {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+}
+
+.gterm dt {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.gterm dd {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
   /* ---------- Hero ---------- */
   .hero{
     padding: 5rem 2rem 4rem;
@@ -552,7 +578,7 @@
       <div class="tag"><span class="circle">09</span><span class="label">Trading Vocabulary</span></div>
       <h2>Learn the essential vocabulary</h2>
       <p>These terms show up constantly. Understanding them cold before you trade live matters more than any strategy or signal.</p>   
-      <dl class="glossary">
+      <dl class="glossary"><grid>
         <div class="gterm">
           <dt>Spread</dt>
           <dd>The gap between the buy and sell price — effectively the cost of entering a trade. Lower spreads = lower trading costs.</dd>
