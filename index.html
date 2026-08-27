@@ -369,7 +369,9 @@
 
 <div class="layout">
   <nav class="rail" id="rail">
-    <a href="#s1" class="n">01</a>
+    <a href="#s1" class="n">01
+    "Get Broker Link"
+    </a>
     <a href="#s2" class="n">02</a>
     <a href="#s3" class="n">03</a>
     <a href="#s4" class="n">04</a>
@@ -743,91 +745,6 @@
   Template guide · swap the hero copy, step content, and checklist items for your own subject. Numbered steps only make sense if your content is genuinely sequential — drop the numbering for reference material that can be read in any order.
 </footer>
 
-<script>
-  const CHECKLIST_ITEMS = [
-    "Picked a roast and bought fresh whole-bean coffee",
-    "Chose a brewing method to start with",
-    "Got a burr grinder",
-    "Picked a starting ratio (e.g. 1:16)",
-    "Matched grind size to method",
-    "Set up a dedicated counter space",
-    "Brewed and tasted a first cup",
-    "Adjusted one variable based on taste"
-  ];
-
-  const itemsEl = document.getElementById('items');
-  const fillEl = document.getElementById('fill');
-  const pctEl = document.getElementById('pct');
-  const STORAGE_KEY = 'coffee-guide-checklist';
-  let state = {};
-
-  function render(){
-    itemsEl.innerHTML = '';
-    CHECKLIST_ITEMS.forEach((text, i) => {
-      const id = 'item-' + i;
-      const row = document.createElement('label');
-      row.className = 'check-item';
-      row.setAttribute('for', id);
-      row.innerHTML = `<input type="checkbox" id="${id}" ${state[i] ? 'checked' : ''}><span>${text}</span>`;
-      row.querySelector('input').addEventListener('change', (e) => {
-        state[i] = e.target.checked;
-        save();
-        updateProgress();
-      });
-      itemsEl.appendChild(row);
-    });
-    updateProgress();
-  }
-
-  function updateProgress(){
-    const total = CHECKLIST_ITEMS.length;
-    const done = Object.values(state).filter(Boolean).length;
-    const pct = total ? Math.round((done / total) * 100) : 0;
-    fillEl.style.width = pct + '%';
-    pctEl.textContent = pct + '%';
-  }
-
-  async function save(){
-    try{
-      if (window.storage) {
-        await window.storage.set(STORAGE_KEY, JSON.stringify(state));
-      } else {
-        // fallback for plain browser preview outside the artifact host
-        document.cookie = STORAGE_KEY + '=' + encodeURIComponent(JSON.stringify(state)) + ';path=/';
-      }
-    }catch(e){ console.error('save failed', e); }
-  }
-
-  async function load(){
-    try{
-      if (window.storage) {
-        const result = await window.storage.get(STORAGE_KEY);
-        if (result) state = JSON.parse(result.value);
-      }
-    }catch(e){ /* no saved state yet */ }
-    render();
-  }
-
-  load();
-
-  // Scroll-spy for the step rail
-  const rail = document.getElementById('rail');
-  const links = Array.from(rail.querySelectorAll('a'));
-  const sections = links.map(a => document.querySelector(a.getAttribute('href')));
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const id = '#' + entry.target.id;
-      const link = links.find(a => a.getAttribute('href') === id);
-      if (entry.isIntersecting) {
-        links.forEach(a => a.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
-
-  sections.forEach(s => s && observer.observe(s));
-</script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const STORAGE_KEY = 'checklist-state';
