@@ -170,25 +170,29 @@
     }
   }
   .rail a{
-    text-decoration: none;
-    color: var(--text-muted);
-    border-left:2px solid var(--border);
-    font-size: 13px;
-    padding: 8px 10px;
-    border-radius: 6px;
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    white-space: nowrap;
-    transition: color .15s, background .15s;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-left: 2px solid var(--border);
+  font-size: 13px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  white-space: normal;
+  transition: color .15s, border-color .15s;
   }
   .rail a:hover{ color: var(--text); background: var(--surface); }
   .rail a.active{ color: var(--gold); background: var(--gold-dim); }
   .rail a .n{
-    font-family: var(--font-mono);
-    font-size: 11px;
-    opacity: .7;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gold);
+  opacity: .8;
   }
+  .rail a .label{
+  font-size: 13px;
+  line-height: 1.3;
+}
 
   /* ---------- Steps ---------- */
   .step{
@@ -370,43 +374,19 @@
 
 <div class="layout">
   <nav class="rail" id="rail">
-    <a href="#s1" class="n">01
-    Get Broker Link
-    </a>
-    <a href="#s2" class="n">02
-    Open Verity Account 
-    </a>
-    <a href="#s3" class="n">03
-    Deposit Funds
-    </a>
-    <a href="#s4" class="n">04
-    Join BAZ Community
-    </a>
-    <a href="#s5" class="n">05
-    Join Telegram Group
-    </a>
-    <a href="#s6" class="n">06
-    Download MT5
-    </a>
-    <a href="#s7" class="n">07
-    Practice on Demo
-    </a>
-    <a href="#s8" class="n">08
-    Navigate MT5
-    </a>
-    <a href="#s9" class="n">09
-    Trading Vocabulary
-    </a>
-    <a href="#s10" class="n">10
-    Setup SK5
-    </a>
-    <a href="#s11" class="n">11
-    Risk Management
-    </a>
-    <a href="#s12" class="n">12
-    Checklist
-    </a>
-  </nav>
+  <a href="#s1"><span class="n">01</span><span class="label">Get Broker Link</span></a>
+  <a href="#s2"><span class="n">02</span><span class="label">Open Verity Account</span></a>
+  <a href="#s3"><span class="n">03</span><span class="label">Deposit Funds</span></a>
+  <a href="#s4"><span class="n">04</span><span class="label">Join BAZ Community</span></a>
+  <a href="#s5"><span class="n">05</span><span class="label">Join Telegram Group</span></a>
+  <a href="#s6"><span class="n">06</span><span class="label">Download MT5</span></a>
+  <a href="#s7"><span class="n">07</span><span class="label">Practice on Demo</span></a>
+  <a href="#s8"><span class="n">08</span><span class="label">Navigate MT5</span></a>
+  <a href="#s9"><span class="n">09</span><span class="label">Trading Vocabulary</span></a>
+  <a href="#s10"><span class="n">10</span><span class="label">Setup SK5</span></a>
+  <a href="#s11"><span class="n">11</span><span class="label">Risk Management</span></a>
+  <a href="#s12"><span class="n">12</span><span class="label">Checklist</span></a>
+</nav>
 
   <main>
     <section class="step" id="s1">
